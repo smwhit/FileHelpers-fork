@@ -714,7 +714,8 @@ namespace FileHelpers
             {
                 if (NullValue == null)
                 {
-                    if (FieldTypeInternal.IsValueType)
+                    //Did not respect nullable type, so hence second part of boolean expression
+                    if (FieldTypeInternal.IsValueType && !IsNullableType )
                         throw new BadUsageException("Null Value found. You must specify a NullValueAttribute in the " + FieldInfo.Name +
                                                     " field of type " + FieldTypeInternal.Name + ", because this is a ValueType.");
                     else
